@@ -95,6 +95,7 @@ struct Settings {
     bool nadir_mode = false;
 
     float nadir_weight = 65535.0f;
+};
 
 TEX_NAMESPACE_END
 
