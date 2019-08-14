@@ -35,6 +35,7 @@ externalproject_add(ext_mve
     GIT_REPOSITORY  https://github.com/simonfuhrmann/mve.git
     UPDATE_COMMAND  ""
     SOURCE_DIR      ${CMAKE_SOURCE_DIR}/elibs/mve
+    CMAKE_ARGS      -DWITH_UTILITIES=OFF
     CONFIGURE_COMMAND ""
     BUILD_COMMAND   make -C libs/mve && make -C libs/util #not platform independent
     BUILD_IN_SOURCE 1
