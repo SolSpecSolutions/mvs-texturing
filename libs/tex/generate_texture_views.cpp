@@ -109,7 +109,7 @@ from_images_and_camera_files(std::string const & path,
     }
 
     /* Create temporary dir for storing undistorted image files */
-    char const* tmp_dir = (path + "/tmp/").c_str();
+    //char const* tmp_dir = (path + "/tmp/").c_str();
     if (!(util::fs::dir_exists(tmp_dir))) {
         util::fs::mkdir(tmp_dir);
     }
@@ -190,7 +190,7 @@ from_nvm_scene(std::string const & nvm_file,
     mve::Bundle::Cameras& cameras = bundle->get_cameras();
 
     /* Create temporary dir for storing undistorted image files */
-    char const* tmp_dir = (util::fs::dirname(nvm_file) + "/tmp/").c_str();
+    //char const* tmp_dir = (util::fs::dirname(nvm_file) + "/tmp/").c_str();
     if (!(util::fs::dir_exists(tmp_dir))) {
         util::fs::mkdir(tmp_dir);
     }
