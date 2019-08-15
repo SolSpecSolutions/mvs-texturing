@@ -37,7 +37,7 @@ externalproject_add(ext_mve
     UPDATE_COMMAND  ""
     SOURCE_DIR      ${CMAKE_SOURCE_DIR}/elibs/mve
     CONFIGURE_COMMAND ""
-    BUILD_COMMAND   make -C libs/mve && make -C LDFLAGS="-L/usr/lib -lexecinfo" libs/util #not platform independent
+    BUILD_COMMAND   make -C libs/mve && make LDFLAGS="-L/usr/lib -lexecinfo" -C libs/util #not platform independent
     BUILD_IN_SOURCE 1
     INSTALL_COMMAND ""
 )
