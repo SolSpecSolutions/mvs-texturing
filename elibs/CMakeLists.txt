@@ -3,7 +3,6 @@ externalproject_add(ext_mapmap
     GIT_REPOSITORY  https://github.com/dthuerck/mapmap_cpu.git
     GIT_TAG         master
     UPDATE_COMMAND  ""
-    CMAKE_ARGS      -DWITH_UTILITIES=OFF
     SOURCE_DIR      ${CMAKE_SOURCE_DIR}/elibs/mapmap
     CONFIGURE_COMMAND ""
     BUILD_COMMAND   ""
@@ -33,7 +32,8 @@ externalproject_add(ext_eigen
 
 externalproject_add(ext_mve
     PREFIX          mve
-    GIT_REPOSITORY  https://github.com/simonfuhrmann/mve.git
+    GIT_REPOSITORY  https://github.com/npcasler/mve.git
+    GIT_TAG         Check_for_glibc
     UPDATE_COMMAND  ""
     SOURCE_DIR      ${CMAKE_SOURCE_DIR}/elibs/mve
     CONFIGURE_COMMAND ""
