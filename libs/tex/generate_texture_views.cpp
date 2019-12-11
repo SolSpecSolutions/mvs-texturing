@@ -108,6 +108,12 @@ from_images_and_camera_files(std::string const & path,
         }
     }
 
+    /* Create temporary dir for storing undistorted image files */
+    //char const* tmp_dir = (path + "/tmp/").c_str();
+    if (!(util::fs::dir_exists(tmp_dir.c_str()))) {
+        util::fs::mkdir(tmp_dir.c_str());
+    }
+
     ProgressCounter view_counter("\tLoading", files.size() / 2);
     #pragma omp parallel for
     for (std::size_t i = 0; i < files.size(); i += 2) {
@@ -182,6 +188,12 @@ from_nvm_scene(std::string const & nvm_file,
     std::vector<mve::NVMCameraInfo> nvm_cams;
     mve::Bundle::Ptr bundle = mve::load_nvm_bundle(nvm_file, &nvm_cams);
     mve::Bundle::Cameras& cameras = bundle->get_cameras();
+
+    /* Create temporary dir for storing undistorted image files */
+    //char const* tmp_dir = (util::fs::dirname(nvm_file) + "/tmp/").c_str();
+    if (!(util::fs::dir_exists(tmp_dir.c_str()))) {
+        util::fs::mkdir(tmp_dir.c_str());
+    }
 
     ProgressCounter view_counter("\tLoading", cameras.size());
     #pragma omp parallel for
