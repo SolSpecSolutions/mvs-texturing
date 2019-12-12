@@ -14,3 +14,5 @@ RUN cd /tmp && \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make -j $(nproc) install && \
     rm -rf /tmp/mvs-texturing
+
+CMD ["/bin/sh"]
