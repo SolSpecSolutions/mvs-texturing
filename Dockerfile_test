@@ -14,3 +14,7 @@ RUN cd /tmp && \
     cmake -DCMAKE_BUILD_TYPE=Release .. && \
     make -j $(nproc) install && \
     rm -rf /tmp/mvs-texturing
+
+CMD texrecon /data/scene::undistorted /data/surface-clean.ply /output/textured
+
+#use: docker run -v /home/jake/scripts/mvs/images/:/data/ -v /home/jake/scripts/mvs/output/:/output/ mvs_testing
