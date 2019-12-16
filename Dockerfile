@@ -7,7 +7,7 @@ RUN apk update && \
     apk add --no-cache cmake git make g++ libtbb@testing libtbb-dev@testing libpng-dev jpeg-dev tiff-dev
 
 RUN cd /tmp && \
-    git clone --branch 'master' --single-branch https://github.com/SolSpecSolutions/mvs-texturing && \
+    git clone --branch 'test_mvs_UNSIGNED_LONG_INT' --single-branch https://github.com/SolSpecSolutions/mvs-texturing && \
     cd /tmp/mvs-texturing && \
     mkdir build && \
     cd build && \
