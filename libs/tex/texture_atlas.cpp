@@ -87,7 +87,8 @@ TextureAtlas::insert(TexturePatch::ConstPtr texture_patch) {
     math::Vec2f offset = math::Vec2f(rect.min_x + padding, rect.min_y + padding);
 
     std::cout << "line 88 of texture_atlas.cpp next line is faces.insert(faces.end(), patch_faces.begin(), patch_faces.end())" << std::endl;
-    std::pair <std::string,bool> val;
+    std::cout << std::to_string(faces.insert(faces.end(), patch_faces.begin(), patch_faces.end())) << std::endl;
+    std::pair <std::string,long unsigned int> val;
     val = faces.insert(faces.end(), patch_faces.begin(), patch_faces.end());
     std::cout << val.first << val.second << std::endl;
 
@@ -139,6 +140,7 @@ TextureAtlas::apply_edge_padding(void) {
 
                         /* Add the pixel to the set of invalid border pixels. */
                         std::cout << "line 138 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(x, y))" << std::endl;
+                        std::cout << std::to_string(invalid_border_pixels.insert(std::pair<int, int>(x, y)) << std::endl;
                         std::pair <std::string,bool> val;
                         val = invalid_border_pixels.insert(std::pair<int, int>(x, y));
                         std::cout << val.first << val.second << std::endl;
@@ -215,6 +217,7 @@ TextureAtlas::apply_edge_padding(void) {
                          new_validity_mask->at(nx, ny, 0) == 0) {
 
                          std::cout << "line 212 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(nx, ny))" << std::endl;
+                         std::cout << std::to_string(invalid_border_pixels.insert(std::pair<int, int>(nx, ny))) << endl;
                          std::pair <std::string,bool> val;
                          val = invalid_border_pixels.insert(std::pair<int, int>(nx, ny));
                          std::cout << val.first << val.second << std::endl;
