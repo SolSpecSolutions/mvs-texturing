@@ -11,7 +11,7 @@
 #include <list>
 #include <iostream>
 #include <fstream>
-
+#include <string>     // std::string, std::to_string
 #include <util/timer.h>
 #include <mve/image_tools.h>
 

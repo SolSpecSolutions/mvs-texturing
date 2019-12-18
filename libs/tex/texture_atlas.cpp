@@ -9,6 +9,8 @@
 
 #include <set>
 #include <map>
+#include <string>     // std::string, std::to_string
+#include <iostream>
 
 #include <util/file_system.h>
 #include <mve/image_tools.h>
@@ -86,7 +88,7 @@ TextureAtlas::insert(TexturePatch::ConstPtr texture_patch) {
     math::Vec2f offset = math::Vec2f(rect.min_x + padding, rect.min_y + padding);
 
     std::cout << "line 88 of texture_atlas.cpp next line is faces.insert(faces.end(), patch_faces.begin(), patch_faces.end())" << std::endl;
-    std::cout << faces.insert(faces.end(), patch_faces.begin(), patch_faces.end()) << std::endl;
+    std::cout << std::to_string(faces.insert(faces.end(), patch_faces.begin(), patch_faces.end())) << std::endl;
 
     /* Calculate the final textcoords of the faces. */
     for (std::size_t i = 0; i < patch_faces.size(); ++i) {
@@ -136,7 +138,7 @@ TextureAtlas::apply_edge_padding(void) {
 
                         /* Add the pixel to the set of invalid border pixels. */
                         std::cout << "line 138 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(x, y))" << std::endl;
-                        std::cout << invalid_border_pixels.insert(std::pair<int, int>(x, y)) << std::endl;
+                        std::cout << std::to_string(invalid_border_pixels.insert(std::pair<int, int>(x, y))) << std::endl;
                     }
                 }
             }
@@ -210,7 +212,7 @@ TextureAtlas::apply_edge_padding(void) {
                          new_validity_mask->at(nx, ny, 0) == 0) {
 
                          std::cout << "line 212 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(nx, ny))" << std::endl;
-                         std::cout << invalid_border_pixels.insert(std::pair<int, int>(nx, ny)) << std::endl;
+                         std::cout << std::to_string(invalid_border_pixels.insert(std::pair<int, int>(nx, ny))) << std::endl;
                     }
                 }
             }
