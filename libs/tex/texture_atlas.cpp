@@ -120,7 +120,7 @@ TextureAtlas::insert(TexturePatch::ConstPtr texture_patch) {
     std::pair <std::vector, std::allocator> val;
     val = faces.insert(faces.end(), patch_faces.begin(), patch_faces.end());
     std::cout << val.first << val.second << std::endl;*/
-    faces.insert(faces.end(), patch_faces.begin(), patch_faces.end())
+    faces.insert(faces.end(), patch_faces.begin(), patch_faces.end());
 
     /* Calculate the final textcoords of the faces. */
     for (std::size_t i = 0; i < patch_faces.size(); ++i) {
@@ -174,7 +174,7 @@ TextureAtlas::apply_edge_padding(void) {
                         std::pair <std::_Rb_tree_const_iterator,bool> val;
                         val = invalid_border_pixels.insert(std::pair<int, int>(x, y));
                         std::cout << val.first << val.second << std::endl;*/
-                        invalid_border_pixels.insert(std::pair<int, int>(x, y))
+                        invalid_border_pixels.insert(std::pair<int, int>(x, y));
                     }
                 }
             }
@@ -252,7 +252,7 @@ TextureAtlas::apply_edge_padding(void) {
                          std::pair <_Rb_tree_const_iterator, bool> val;
                          val = invalid_border_pixels.insert(std::pair<int, int>(nx, ny));
                          std::cout << val.first << val.second << std::endl;*/
-                         invalid_border_pixels.insert(std::pair<int, int>(nx, ny))
+                         invalid_border_pixels.insert(std::pair<int, int>(nx, ny));
                     }
                 }
             }
