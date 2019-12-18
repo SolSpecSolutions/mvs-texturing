@@ -140,6 +140,7 @@ generate_texture_atlases(std::vector<TexturePatch::Ptr> * orig_texture_patches,
                  << precent << "%... " << std::flush;
             }
 
+            std::cout << "trying texture_atlas->insert(*it)" << std::endl;
             if (texture_atlas->insert(*it)) {
                 std::cout << "line 144 of generate_texture_atlases.cpp texture_atlas->insert(*it) returned true" << std::endl;
                 it = texture_patches.erase(it);

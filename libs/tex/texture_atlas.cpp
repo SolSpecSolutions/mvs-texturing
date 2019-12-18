@@ -96,6 +96,7 @@ TextureAtlas::insert(TexturePatch::ConstPtr texture_patch) {
     int const width = texture_patch->get_width() + 2 * padding;
     int const height = texture_patch->get_height() + 2 * padding;
     Rect<int> rect(0, 0, width, height);
+    std::cout << "trying bin->insert(&rect)" << std::endl;
     if (!bin->insert(&rect)) {
         std::cout << "line 70 of texture_atlas.cpp bin->insert(&rect) returned false" << std::endl;
         return false;
