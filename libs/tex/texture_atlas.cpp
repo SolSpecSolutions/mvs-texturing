@@ -246,7 +246,7 @@ TextureAtlas::apply_edge_padding(void) {
                          new_validity_mask->at(nx, ny, 0) == 0) {
 
                          std::cout << "line 212 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(nx, ny))" << std::endl;
-                         std::cout << get_val<0>(invalid_border_pixels.insert(std::pair<int, int>(nx, ny))) << endl;
+                         std::cout << get_val<0>(invalid_border_pixels.insert(std::pair<int, int>(nx, ny))) << std::endl;
                          /*std::pair <_Rb_tree_const_iterator, bool> val;
                          val = invalid_border_pixels.insert(std::pair<int, int>(nx, ny));
                          std::cout << val.first << val.second << std::endl;*/
