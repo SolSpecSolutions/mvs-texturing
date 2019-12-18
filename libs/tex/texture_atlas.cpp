@@ -85,7 +85,7 @@ typedef std::set<std::pair<int, int> > PixelSet;
 
 bool
 TextureAtlas::insert(TexturePatch::ConstPtr texture_patch) {
-    std::cout << "line 58 of texture_atlas.cpp" << std::endl;
+    /*std::cout << "line 58 of texture_atlas.cpp" << std::endl;*/
     if (finalized) {
         throw util::Exception("No insertion possible, TextureAtlas already finalized");
     }
@@ -115,8 +115,8 @@ TextureAtlas::insert(TexturePatch::ConstPtr texture_patch) {
     /* Calculate the offset of the texture patches' relative texture coordinates */
     math::Vec2f offset = math::Vec2f(rect.min_x + padding, rect.min_y + padding);
 
-    std::cout << "line 88 of texture_atlas.cpp next line is faces.insert(faces.end(), patch_faces.begin(), patch_faces.end())" << std::endl;
-    /*std::cout << get_val<0>(faces.insert(faces.end(), patch_faces.begin(), patch_faces.end())) << std::endl;
+    /*std::cout << "line 88 of texture_atlas.cpp next line is faces.insert(faces.end(), patch_faces.begin(), patch_faces.end())" << std::endl;
+    std::cout << get_val<0>(faces.insert(faces.end(), patch_faces.begin(), patch_faces.end())) << std::endl;
     std::pair <std::vector, std::allocator> val;
     val = faces.insert(faces.end(), patch_faces.begin(), patch_faces.end());
     std::cout << val.first << val.second << std::endl;*/
@@ -169,8 +169,8 @@ TextureAtlas::apply_edge_padding(void) {
                         validity_mask->at(nx, ny, 0) == 255) {
 
                         /* Add the pixel to the set of invalid border pixels. */
-                        std::cout << "line 138 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(x, y))" << std::endl;
-                        /*std::cout << get_val<0>(invalid_border_pixels.insert(std::pair<int, int>(x, y))) << std::endl;
+                        /*std::cout << "line 138 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(x, y))" << std::endl;
+                        std::cout << get_val<0>(invalid_border_pixels.insert(std::pair<int, int>(x, y))) << std::endl;
                         std::pair <std::_Rb_tree_const_iterator,bool> val;
                         val = invalid_border_pixels.insert(std::pair<int, int>(x, y));
                         std::cout << val.first << val.second << std::endl;*/
@@ -247,8 +247,8 @@ TextureAtlas::apply_edge_padding(void) {
                          0 <= ny && ny < height &&
                          new_validity_mask->at(nx, ny, 0) == 0) {
 
-                         std::cout << "line 212 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(nx, ny))" << std::endl;
-                         /*std::cout << get_val<0>(invalid_border_pixels.insert(std::pair<int, int>(nx, ny))) << std::endl;
+                         /*std::cout << "line 212 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(nx, ny))" << std::endl;
+                         std::cout << get_val<0>(invalid_border_pixels.insert(std::pair<int, int>(nx, ny))) << std::endl;
                          std::pair <_Rb_tree_const_iterator, bool> val;
                          val = invalid_border_pixels.insert(std::pair<int, int>(nx, ny));
                          std::cout << val.first << val.second << std::endl;*/
