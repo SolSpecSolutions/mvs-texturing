@@ -169,7 +169,7 @@ TextureAtlas::apply_edge_padding(void) {
 
                         /* Add the pixel to the set of invalid border pixels. */
                         std::cout << "line 138 of texture_atlas.cpp next line is invalid_border_pixels.insert(std::pair<int, int>(x, y))" << std::endl;
-                        std::cout << get_val<0>(invalid_border_pixels.insert(std::pair<int, int>(x, y)) << std::endl;
+                        std::cout << get_val<0>(invalid_border_pixels.insert(std::pair<int, int>(x, y))) << std::endl;
                         /*std::pair <std::_Rb_tree_const_iterator,bool> val;
                         val = invalid_border_pixels.insert(std::pair<int, int>(x, y));
                         std::cout << val.first << val.second << std::endl;*/
