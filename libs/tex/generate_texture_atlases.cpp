@@ -142,12 +142,12 @@ generate_texture_atlases(std::vector<TexturePatch::Ptr> * orig_texture_patches,
 
             /*std::cout << "trying texture_atlas->insert(*it)" << std::endl;*/
             if (texture_atlas->insert(*it)) {
-                std::cout << "line 144 of generate_texture_atlases.cpp texture_atlas->insert(*it) returned true" << std::endl;
+                std::cout << "line 144 of generate_texture_atlases.cpp texture_atlas->insert(*it) returned true. Length of texture_patches is " << texture_patches.size() << ". before this remaining_patches was " << remaining_patches << std::endl;
                 it = texture_patches.erase(it);
                 remaining_patches -= 1;
             } else {
                 ++it;
-                std::cout << "line 144 of generate_texture_atlases.cpp texture_atlas->insert(*it) returned false" << std::endl;
+                std::cout << "line 144 of generate_texture_atlases.cpp texture_atlas->insert(*it) returned false. Length of texture_patches is " << texture_patches.size() << ". before this remaining_patches was " << remaining_patches << std::endl;
             }
         }
 
