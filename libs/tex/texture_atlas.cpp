@@ -245,8 +245,10 @@ TextureAtlas::finalize() {
     }
 
     this->bin.reset();
+    std::cout << "bin is unique? " << bin.unique() << std::endl;
     this->apply_edge_padding();
     this->validity_mask.reset();
+    std::cout << "validity_mask is unique? " << validity_mask.unique() << std::endl;
     this->merge_texcoords();
 
     this->finalized = true;
