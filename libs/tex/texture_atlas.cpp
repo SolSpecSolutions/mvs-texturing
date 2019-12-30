@@ -18,7 +18,6 @@
 #include "texture_atlas.h"
 #include <tuple>
 #include <iostream>
-#include <string>
 
 namespace detail {
 
@@ -46,7 +45,7 @@ auto constexpr get_val(std::pair<T, U> const& pair)
     return detail::get_val_dispatch(pair, detail::index_tag<N>{});
 }
 
-TextureAtlas::TextureAtlas(unsigned long int size) :
+TextureAtlas::TextureAtlas(unsigned int size) :
     size(size), padding(size >> 7), finalized(false) {
 
     bin = RectangularBin::create(size, size);
@@ -176,7 +175,7 @@ TextureAtlas::apply_edge_padding(void) {
     mve::ByteImage::Ptr new_validity_mask = validity_mask->duplicate();
 
     /* Iteratively dilate border pixels until padding constants are reached. */
-    for (unsigned long int n = 0; n <= padding; ++n) {
+    for (unsigned int n = 0; n <= padding; ++n) {
         PixelVector new_valid_pixels;
 
         PixelSet::iterator it = invalid_border_pixels.begin();
