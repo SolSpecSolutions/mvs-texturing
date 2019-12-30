@@ -9,14 +9,44 @@
 
 #include <set>
 #include <map>
-
+#include <string>
+#include <utility>
 #include <util/file_system.h>
 #include <mve/image_tools.h>
 #include <mve/image_io.h>
 
 #include "texture_atlas.h"
+#include <tuple>
+#include <iostream>
+#include <string>
 
-TextureAtlas::TextureAtlas(unsigned int size) :
+namespace detail {
+
+template <std::size_t>
+struct index_tag { explicit constexpr index_tag() = default; };
+
+template <class T, class U>
+constexpr T get_val_dispatch(std::pair<T, U> const& pair, index_tag<0>)
+{
+    return pair.first;
+}
+
+template <class T, class U>
+constexpr U get_val_dispatch(std::pair<T, U> const& pair, index_tag<1>)
+{
+    return pair.second;
+}
+
+} // namespace detail
+
+template <std::size_t N, class T, class U>
+auto constexpr get_val(std::pair<T, U> const& pair)
+    -> typename std::tuple_element<N, std::pair<T, U>>::type
+{
+    return detail::get_val_dispatch(pair, detail::index_tag<N>{});
+}
+
+TextureAtlas::TextureAtlas(unsigned long int size) :
     size(size), padding(size >> 7), finalized(false) {
 
     bin = RectangularBin::create(size, size);
@@ -65,7 +95,13 @@ TextureAtlas::insert(TexturePatch::ConstPtr texture_patch) {
     int const width = texture_patch->get_width() + 2 * padding;
     int const height = texture_patch->get_height() + 2 * padding;
     Rect<int> rect(0, 0, width, height);
-    if (!bin->insert(&rect)) return false;
+    /*std::cout << "trying bin->insert(&rect)" << std::endl;*/
+    if (!bin->insert(&rect)) {
+    /*std::cout << "line 70 of texture_atlas.cpp bin->insert(&rect) returned false. width is " << width << ". height is " << height << std::endl;*/
+      return false;
+    } else {
+      std::cout << "line 70 of texture_atlas.cpp bin->insert(&rect) returned true. width is " << width << ". height is " << height << std::endl;
+    }
 
     /* Update texture atlas and its validity mask. */
     mve::ByteImage::Ptr patch_image = mve::image::float_to_byte_image(
@@ -140,7 +176,7 @@ TextureAtlas::apply_edge_padding(void) {
     mve::ByteImage::Ptr new_validity_mask = validity_mask->duplicate();
 
     /* Iteratively dilate border pixels until padding constants are reached. */
-    for (unsigned int n = 0; n <= padding; ++n) {
+    for (unsigned long int n = 0; n <= padding; ++n) {
         PixelVector new_valid_pixels;
 
         PixelSet::iterator it = invalid_border_pixels.begin();
@@ -245,8 +281,10 @@ TextureAtlas::finalize() {
     }
 
     this->bin.reset();
+    std::cout << "bin is unique? " << bin.unique() << " it has " << bin.use_count() << " use count" << std::endl;
     this->apply_edge_padding();
     this->validity_mask.reset();
+    std::cout << "validity_mask is unique? " << validity_mask.unique() << " it has " << validity_mask.use_count() << " use count" << std::endl;
     this->merge_texcoords();
 
     this->finalized = true;
