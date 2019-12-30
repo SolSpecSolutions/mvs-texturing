@@ -110,8 +110,9 @@ view_selection(DataCosts const & data_costs, UniGraph * graph, Settings const &)
     ctr.relax_acyclic_maximal = true;
     ctr.tree_algorithm = mapmap::LOCK_FREE_TREE_SAMPLER;
 
-    /* Set false for non-deterministic (but faster) mapMAP execution. */
-    ctr.sample_deterministic = true;
+
+    /* Set true for deterministic (but slower) mapMAP execution. */
+    ctr.sample_deterministic = false;
     ctr.initial_seed = 548923723;
 
     std::cout << "\tOptimizing:\n\t\tTime[s]\tEnergy" << std::endl;
