@@ -32,19 +32,19 @@ TEX_NAMESPACE_BEGIN
   * @warning asserts that no texture patch exceeds the dimensions
   * of the maximal possible texture atlas size.
   */
-unsigned int
+unsigned long int
 calculate_texture_size(std::list<TexturePatch::ConstPtr> const & texture_patches) {
-    unsigned int size = MAX_TEXTURE_SIZE;
+    unsigned long int size = MAX_TEXTURE_SIZE;
 
     while (true) {
-        unsigned int total_area = 0;
-        unsigned int max_width = 0;
-        unsigned int max_height = 0;
-        unsigned int padding = size >> 7;
+        unsigned long int total_area = 0;
+        unsigned long int max_width = 0;
+        unsigned long int max_height = 0;
+        unsigned long int padding = size >> 7;
 
         for (TexturePatch::ConstPtr texture_patch : texture_patches) {
-            unsigned int width = texture_patch->get_width() + 2 * padding;
-            unsigned int height = texture_patch->get_height() + 2 * padding;
+            unsigned long int width = texture_patch->get_width() + 2 * padding;
+            unsigned long int height = texture_patch->get_height() + 2 * padding;
 
             max_width = std::max(max_width, width);
             max_height = std::max(max_height, height);
@@ -122,7 +122,7 @@ generate_texture_atlases(std::vector<TexturePatch::Ptr> * orig_texture_patches,
     {
 
     while (!texture_patches.empty()) {
-        unsigned int texture_size = calculate_texture_size(texture_patches);
+        unsigned long int texture_size = calculate_texture_size(texture_patches);
 
         texture_atlases->push_back(TextureAtlas::create(texture_size));
         TextureAtlas::Ptr texture_atlas = texture_atlases->back();
