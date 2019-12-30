@@ -110,7 +110,6 @@ view_selection(DataCosts const & data_costs, UniGraph * graph, Settings const &)
     ctr.relax_acyclic_maximal = true;
     ctr.tree_algorithm = mapmap::LOCK_FREE_TREE_SAMPLER;
 
-
     /* Set false for non-deterministic (but faster) mapMAP execution. */
     ctr.sample_deterministic = true;
     ctr.initial_seed = 548923723;
